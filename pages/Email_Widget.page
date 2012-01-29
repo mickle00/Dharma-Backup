@@ -1,0 +1,3 @@
+<apex:page standardController="Case">
+  <c:EmailWidget showVendorContact="false" showSystemContact="false" folder="EEM Activations and Training" caseId="{!Case.Id}"/>
+</apex:page>

@@ -1,0 +1,26 @@
+<apex:page controller="ReContractingAuthentication" showheader="false" sidebar="false" action="{!VerifyAuthentication}" cache="false">
+  <apex:composition template="GSOReContractingTemplate">
+    <apex:define name="body">
+    <br/>  
+    <apex:form >
+    <apex:pageMessages escape="false"/>
+    <apex:pageBlock title="Re-Contracting">
+        <apex:pageBlockSection columns="1" title="Request Authentication" collapsible="false">
+            <div>Please enter an email address. Once you have been authenticated an email will be sent with a link to the Re-Contracting site.</div>
+            <apex:pageBlockSectionItem >
+            <apex:outputLabel value="Email: "></apex:outputLabel>
+            <apex:outputPanel >
+                <apex:inputText value="{!PSGUserEmail}"/>
+                <apex:commandButton value="Submit" action="{!RequestAuthentication}"/>
+            </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!Confirmation != null}">
+                <apex:outputLabel style="font-weight:bold;" value="{!Confirmation}"></apex:outputLabel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    </apex:form>
+    </apex:define>
+  </apex:composition>
+</apex:page>

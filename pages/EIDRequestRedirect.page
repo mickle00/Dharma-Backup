@@ -1,0 +1,14 @@
+<apex:page standardController="Contract_Checklist__c" extensions="ContractChecklistExtension" action="{!EIDRequestRedirect}">
+
+<apex:form id="form">
+    <apex:inputHidden value="{!Contract_Checklist__c.Status__c}"/>
+    <apex:inputHidden value="{!Contract_Checklist__c.Account__r.Vendor_Id__c}"/>
+    <apex:inputHidden value="{!Contract_Checklist__c.Account__r.Expedia_Hotel_Id__c}"/>
+</apex:form>
+
+<script>
+if('{!RedirectUrl}' != '') {
+top.location.href = "{!RedirectUrl}";
+}
+</script> 
+</apex:page>

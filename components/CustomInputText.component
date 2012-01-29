@@ -1,0 +1,9 @@
+<apex:component >
+    <apex:attribute name="objectPrefix" type="String" description="Three character object prefix"/>
+    <apex:attribute name="object" type="String" description="Object to bind"/>
+
+<input type="hidden" name="{!$Component.fn}_lkid" />
+<input type="hidden" name="{!$Component.fn}_lkold" />
+<apex:inputText value="{!object}" id="fn" />
+<a href="javascript: openLookup('/_ui/common/data/LookupPage?lkfm=editPage&lknm={!$Component.fn}&lktp={!ObjectPrefix}',670,'1','&lksrch='+escapeUTF(getElementByIdCS('{!$Component.fn}').value))"><img src="/s.gif" alt="{!object} Lookup (New Window)"  class="lookupIcon" onblur="this.className = 'lookupIcon';" onfocus="this.className = 'lookupIconOn';" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" title="{!object} Lookup (New Window)"/></a>
+</apex:component>

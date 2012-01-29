@@ -1,0 +1,172 @@
+<apex:page Controller="EIDRequestExtension" title="Expedia/Vendor ID Request Form">
+<apex:sectionHeader title="Expedia/Vendor ID Request Form" description="Note: You must either fill out the form below or click 'Cancel' to return to the contract without requesting an id."/>
+<apex:pageMessages />
+<apex:form >
+    <apex:pageBlock mode="Edit" title="ID Request - {!ContractChecklist.Account__r.Name}">
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!Cancel}" value="Cancel"/>
+            <apex:commandButton action="{!Save}" value="Submit"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="Account Information">
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Name.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!AccountName}"/>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(AccountName = null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Phone.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!Phone}"/>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(Phone= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Chain__c .Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <c:CustomInputText object="{!Chain}" objectPrefix="a0I"></c:CustomInputText>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(Chain= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Fax.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!Fax}"/>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(Fax= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Brand__c.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <c:CustomInputText object="{!Brand}" objectPrefix="a0H"></c:CustomInputText>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(Brand= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Structure Type"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                <apex:selectList multiselect="false" size="1" value="{!StructureType}">
+                    <apex:selectOptions value="{!StructureTypes}"></apex:selectOptions>
+                </apex:selectList>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(StructureTypes= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Comments"></apex:outputLabel>
+                <apex:inputTextarea value="{!UserComments}" rows="5" cols="50"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Price_Level__c.Label}"></apex:outputLabel>
+                <apex:selectList value="{!PriceLevel}" multiselect="false" size="1">
+                    <apex:selectOption itemValue="Lower Tier"></apex:selectOption>
+                    <apex:selectOption itemValue="Middle Tier"></apex:selectOption>
+                    <apex:selectOption itemValue="Upper Tier"></apex:selectOption>
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Geography">
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Super_Region__c .Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <c:CustomInputText object="{!SuperRegion}" objectPrefix="a06"></c:CustomInputText>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(SuperRegion= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Region__c.Label}"></apex:outputLabel>
+                <c:CustomInputText object="{!Region}" objectPrefix="a0A"></c:CustomInputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Market__c.Label}"></apex:outputLabel>
+                <c:CustomInputText object="{!Market}" objectPrefix="a09"></c:CustomInputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Submarket__c.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <c:CustomInputText object="{!Submarket}" objectPrefix="a0D"></c:CustomInputText>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(Submarket= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.Closest_Airport__c.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!ClosestAirport}"/>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(ClosestAirport= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Billing Information" columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.BillingStreet.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputTextarea value="{!BillingStreet}" cols="50" rows="3"/>
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(BillingStreet= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.BillingCity.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!BillingCity}" />
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(BillingCity= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.BillingState.Label}"></apex:outputLabel>
+                <apex:inputText value="{!BillingState}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.BillingPostalCode.Label}"></apex:outputLabel>
+                <apex:inputText value="{!BillingPostalCode}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Account.Fields.BillingCountry.Label}"></apex:outputLabel>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!BillingCountry}" />
+                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(BillingCountry= null && InvalidInput, true, false)}">
+                        <strong>Error:</strong> You must enter a value
+                    </apex:outputPanel>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:inputHidden value="{!ContractChecklist.Account__c}" />
+    <apex:inputHidden value="{!ContractChecklist.Set_up_EVC__c}" />
+    <apex:inputHidden value="{!ContractChecklist.Set_up_Expedia_Pay__c}" />
+</apex:form>
+</apex:page>

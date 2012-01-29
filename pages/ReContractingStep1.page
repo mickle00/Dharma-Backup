@@ -1,0 +1,75 @@
+<apex:page showheader="false" sidebar="false" Controller="sitesVFReContracting" action="{!VerifyAuthentication}" cache="false">
+  <apex:composition template="GSOReContractingTemplate">
+    <apex:define name="body">  
+        <br/>
+        <apex:form id="theForm">
+        <apex:pageMessages />
+        <apex:pageblock title="Re-Contracting" id="pb">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Next" action="{!goToStep2}"/>
+            </apex:pageBlockButtons>
+           
+           <div><strong>Market Manager: {!PSGUser.Name}</strong></div><br/>
+           <apex:outputLabel value="Expedia Hotel ID:"></apex:outputLabel>&nbsp;
+           <apex:inputText value="{!ExpediaHotelId}"/>
+           <apex:commandButton action="{!Search}" value="Search"/>
+           <br/><br/>
+            <apex:pageBlockSection columns="1" title="Available Hotels">
+            <apex:panelGrid columns="5" rendered="{!numberOfPages> 1}" style="float:right;">
+                <apex:commandLink action="{!first}" >First</apex:commandlink>
+                <apex:commandLink action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+                <apex:outputLabel value="(Page {!pageNumber} of {!numberOfPages})"></apex:outputLabel>
+                <apex:commandLink action="{!next}" rendered="{!hasNext}">Next</apex:commandlink>
+                <apex:commandLink action="{!last}" >Last</apex:commandlink>
+            </apex:panelGrid>
+            
+            <apex:pageBlockTable value="{!AvailableAccounts}" var="avail" rendered="{!AvailableAccounts.size > 0}">
+                <apex:column headerValue="Expedia Hotel ID" value="{!avail.Acct.Expedia_Hotel_Id__c}"/>
+                <apex:column headerValue="Hotel Name" value="{!avail.Acct.Name}"/>
+                <apex:column headerValue="Contact Name">
+                    <apex:selectList multiselect="false" size="1" value="{!avail.SelectedContactId}">
+                        <apex:selectOptions value="{!avail.Contacts}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange" action="{!setSelectedAccounts}" reRender="{!$Component.theForm.pb.pbs.SelectedAccounts}"/>
+                    </apex:selectList>
+                </apex:column>
+            </apex:pageBlockTable>
+        
+            <apex:panelGrid columns="5" rendered="{!numberOfPages> 1}" style="float:right;">
+                <apex:commandLink action="{!first}">First</apex:commandlink>
+                <apex:commandLink action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+                <apex:outputLabel value="(Page {!pageNumber} of {!numberOfPages})"></apex:outputLabel>
+                <apex:commandLink action="{!next}" rendered="{!hasNext}">Next</apex:commandlink>
+                <apex:commandLink action="{!last}">Last</apex:commandlink>
+            </apex:panelGrid>
+            </apex:pageBlockSection>
+            
+            <br/>
+            <apex:pageBlockSection id="pbs" columns="1" title="Selected Hotels">
+            <apex:outputPanel id="SelectedAccounts">
+            <table class="list">
+                <tr class="headerRow">
+                    <th class="headerRow">Expedia Hotel ID</th>
+                    <th class="headerRow">Hotel Name</th>
+                    <th class="headerRow">Contact Name</th>
+                    <th class="headerRow">Title</th>
+                    <th class="headerRow">Email Address</th>
+                </tr>
+                    <apex:repeat value="{!SelectedAccounts}" var="index">
+                    <apex:repeat value="{!SelectedAccounts[index]}" var="sel">
+                        <tr class="dataRow">
+                        <td class="dataRow">{!sel.Acct.Expedia_Hotel_Id__c}</td>
+                        <td class="dataRow">{!sel.Acct.Name}</td>
+                        <td class="dataRow">{!sel.SelectedContact.Name}</td>
+                        <td class="dataRow">{!sel.SelectedContact.Title}</td>
+                        <td class="dataRow">{!sel.SelectedContact.Email}</td>
+                        </tr>
+                    </apex:repeat>
+                    </apex:repeat>
+                </table>
+            </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageblock>
+        </apex:form>
+    </apex:define>
+  </apex:composition>
+</apex:page>

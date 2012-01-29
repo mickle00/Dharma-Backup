@@ -1,0 +1,62 @@
+<apex:component controller="EmailWidgetController" allowDML="true">
+
+    <apex:attribute name="showVendorContact" description="Show Vendor Contact" type="Boolean" default="true"/>
+    <apex:attribute name="showSystemContact" description="Show System Contact" type="Boolean" default="true"/>
+    <apex:attribute name="showHotelContact" description="Show Hotel Contact" type="Boolean" default="true"/>
+    <apex:attribute name="showAccountTeamContact" description="Show Account Team Contact" type="Boolean" default="true"/>
+    <apex:attribute name="fromAddress" assignTo="{!myEmailWidget.fromAddress}" description="Default From Address" type="String" />
+    <apex:attribute name="folder" assignTo="{!DefaultFolder}" description="Default Template Folder" type="String" />
+    <apex:attribute name="caseId" assignTo="{!CaseId}" description="Case Id" type="Id" />
+    
+    <apex:form >    
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="1" title="New Email" collapsible="False">
+            <apex:dataTable value="{!myEmailWidget}" var="em" style="width:100%">
+                <apex:column headerValue="Hotel Contact:" rendered="{!showHotelContact}">
+                    <apex:selectList value="{!em.selectedHotelContacts}"  multiselect="true" size="4">               
+                        <apex:selectOptions value="{!em.HotelContacts}"/>
+                    </apex:selectList>
+                </apex:column>
+                <apex:column headerValue="Vendor Contact(s):" rendered="{!showVendorContact}">
+                    <apex:selectList value="{!em.selectedVendorContacts}" multiselect="true" size="4">
+                        <apex:selectOptions value="{!em.VendorContacts}"/>
+                    </apex:selectList>
+                </apex:column>      
+                <apex:column headerValue="System Contact(s):" rendered="{!showSystemContact}">
+                    <apex:selectList value="{!em.selectedSystemContacts}" multiselect="true" size="4">
+                        <apex:selectOptions value="{!em.SystemContacts}"/>
+                    </apex:selectList>
+                </apex:column>
+                <apex:column headerValue="Account Team Member(s):" rendered="{!showAccountTeamContact}">
+                    <apex:selectList value="{!em.selectedAccountTeamMembers}" multiselect="true" size="4">
+                        <apex:selectOptions value="{!em.accountTeamMembers}"/>
+                    </apex:selectList>
+                </apex:column>          
+            </apex:dataTable>
+            <apex:dataTable value="{!myEmailWidget}" var="em" align="left">
+                <apex:column >
+                    <apex:outputText escape="false">
+                    &nbsp;
+                    </apex:outputText>
+                </apex:column>
+                <apex:column headervalue="Folder:" id="allFolders">
+                    <apex:selectList value="{!em.Folder}" size="1">        
+                        <apex:selectOptions value="{!em.Folders}"/>
+                        <apex:actionSupport event="onchange" action="{!em.updateTemplates}"/>
+                    </apex:selectList>
+                </apex:column>
+                <apex:column headervalue="Template:" id="allTemplates">
+                    <apex:selectList value="{!em.Template}" size="1">        
+                        <apex:selectOptions value="{!em.Templates}"/>
+                    </apex:selectList>
+                </apex:column>
+                <apex:column >
+                    <apex:commandLink action="{!em.sendConnectivityEmail}" target="_parent" style="text-decoration:none;">
+                        <apex:commandButton value="Create Email" />
+                    </apex:commandLink>
+                </apex:column>
+            </apex:dataTable>     
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:component>

@@ -1,0 +1,68 @@
+<apex:page controller="sitesVFReContracting" showheader="false" sidebar="false" action="{!VerifyAuthentication}" cache="false">
+  <apex:composition template="GSOReContractingTemplate">
+    <apex:define name="body">
+    <br/>
+    <apex:form >
+    <apex:pageMessages />
+    <apex:pageBlock title="Re-Contracting Preview">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Previous" action="{!goToStep2}"/>
+            <apex:commandButton value="Submit" action="{!Submit}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection columns="1" title="Commercial Terms">
+            <apex:outputPanel >
+            <table cellpadding="5">
+                <apex:repeat value="{!AvailableTerms}" var="parent">
+                    <tr style="display:{!IF(parent.SelectedValue = '', 'none', '')};">
+                        <td><apex:outputLabel value="{!parent.Term.Description__c}"/></td>
+                        <td>{!parent.SelectedValue}</td>
+                    </tr>
+                    <apex:repeat value="{!parent.childTerms}" var="child">
+                        <tr style="display:{!IF(child.SelectedValue = '', 'none', '')};">
+                            <td><apex:outputLabel value="{!child.Term.Description__c}"/></td>
+                            <td>{!child.SelectedValue}</td>
+                        </tr>
+                    </apex:repeat>
+                </apex:repeat>
+            </table>
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="Additional Information" rendered="false">
+            <apex:dataTable value="{!SupplierTrainingByMM}" var="strMM" cellpadding="5">
+                <apex:column value="{!$ObjectType.GSOContract__c.Fields.Supplier_Training_by_Market_Manager__c.Label}"/>
+                <apex:column value="{!SupplierTrainingByMM}"/>
+            </apex:dataTable>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection columns="1" title="Selected Hotels">
+            <apex:outputPanel >
+            <table class="list">
+                <tr class="headerRow">
+                    <th class="headerRow">Expedia Hotel ID</th>
+                    <th class="headerRow">Hotel Name</th>
+                    <th class="headerRow">Contact Name</th>
+                    <th class="headerRow">Title</th>
+                    <th class="headerRow">Email Address</th>
+                </tr>
+                <apex:repeat value="{!SelectedAccounts}" var="index">
+                <apex:repeat value="{!SelectedAccounts[index]}" var="sel">
+                    <tr class="dataRow">
+                    <td class="dataRow">{!sel.Acct.Expedia_Hotel_Id__c}</td>
+                    <td class="dataRow">{!sel.Acct.Name}</td>
+                    <td class="dataRow">{!sel.SelectedContact.Name}</td>
+                    <td class="dataRow">{!sel.SelectedContact.Title}</td>
+                    <td class="dataRow">{!sel.SelectedContact.Email}</td>
+                    </tr>
+                </apex:repeat>
+                </apex:repeat>
+            </table>
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+
+    </apex:pageBlock>
+    </apex:form>
+    </apex:define>
+  </apex:composition>
+</apex:page>

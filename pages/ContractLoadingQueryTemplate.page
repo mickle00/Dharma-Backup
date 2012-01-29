@@ -1,0 +1,3 @@
+<apex:page >
+  <apex:outputLink value="/501C00000013Ndv" id="query-template">Query Template</apex:outputLink>
+</apex:page>

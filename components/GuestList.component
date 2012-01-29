@@ -1,0 +1,38 @@
+<apex:component access="global" controller="GuestClass">
+    <apex:attribute name="cId" description="Case Id" assignTo="{!CaseId}" type="Id" />
+    
+    <style type='text/css'> 
+    TD { border: 1px solid black; text-align: center; font: normal 11px arial; padding: 4px; } 
+    TR { border: 1px solid black; text-align: center; font: normal 11px arial; padding: 4px;}
+    .header {border: solid 1px #333333; text-align: center; background-color:#999999;}
+    </style>
+    
+    <table border="0" height="16" cellSpacing="0" cellPadding="4" width="750" align="center">
+    <TR style='font-size: 11px; color: #333333; font-family: Arial, Helvetica, sans-serif'>
+        <TD width="150" class="header"><b>Guest Name</b></TD>
+        <TD width="100" class="header"><b>Arrival Date</b></TD>
+        <TD width="50" class="header"><b>Nights</b></TD>
+        <TD width="150" class="header"><b>Guest relocated to:</b></TD>
+        <TD width="100" class="header"><b>Guest New Booking ID</b></TD>
+        <TD width="100" class="header"><b>Added Cost<br/>of Relocation</b></TD>
+        <TD width="100" class="header"><b>Difference Absorbed by:</b></TD>
+    </TR>
+    
+    <apex:repeat value="{!GuestList}" var="guest">
+        <TR>
+        <TD><apex:outputLabel value="{!guest.Name}"/></TD>
+        <TD>
+            <apex:outputText value="{0, date, MM/dd/yyyy}">
+                <apex:param value="{!guest.Arrival_Date__c}"/>
+            </apex:outputText>
+        </TD>
+        <TD><apex:outputLabel value="{!guest.Number_of_Nights__c}"/></TD>
+        <TD><apex:outputLabel value="{!guest.New_Vendor__r.Name}"/></TD>
+        <TD><apex:outputLabel value="{!guest.New_Expedia_Booking_ID__c}"/></TD>
+        <TD><apex:outputLabel value="{!guest.Relocation_Cost__c}" /></TD>
+        <TD><apex:outputLabel value="{!guest.Difference_Absorbed_By__c}"/></TD>
+        </TR>
+    </apex:repeat>
+
+    </table>
+</apex:component>

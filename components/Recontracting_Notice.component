@@ -1,0 +1,48 @@
+<apex:component access="global" controller="sitesReContractingApproval">
+<apex:attribute name="sId" description="Submission Id" type="Id" assignTo="{!SubmissionId}"/>
+    
+    <style type='text/css'> 
+    TD { border: 1px solid black; text-align: center; font: normal 11px arial; padding: 4px; } 
+    TR { border: 1px solid black; text-align: center; font: normal 11px arial; padding: 4px;}
+    .header {border: solid 1px #333333; text-align: center; background-color:#999999;}
+    </style>
+
+    <apex:outputPanel >
+    <h3>Commercial Terms</h3>
+    <table cellpadding="5">
+        <apex:repeat value="{!Terms}" var="term">
+            <tr>
+                <td><apex:outputLabel value="{!term.Term__r.Description__c}"/></td>
+                <td>{!term.Value__c}</td>
+            </tr>
+        </apex:repeat>
+    </table>
+    </apex:outputPanel>
+    <br/>
+    
+    <h3>Selected Hotels</h3>
+    <table cellpadding="5" >
+        <tr>
+            <th class="header">Expedia Hotel Id</th>
+            <th class="header">Hotel Name</th>
+            <th class="header">Contact Name</th>
+            <th class="header">Title</th>
+            <th class="header">Email</th>
+            <th class="header">Rejected by</th>
+            <th class="header">Rejected Date/Time</th>
+            <th class="header">Rejected Reason</th>
+        </tr>
+    <apex:repeat value="{!Contracts}" var="contract">
+        <tr>
+        <td>{!contract.objGSOContract.Account__r.Expedia_Hotel_Id__c}</td>
+        <td>{!contract.objGSOContract.Account__r.Name}</td>
+        <td>{!contract.objGSOContract.Contact__r.Name}</td>
+        <td>{!contract.objGSOContract.Contact__r.Title}</td>
+        <td>{!contract.objGSOContract.Contact__r.Email}</td>
+        <td>{!contract.objGSOContract.Approved_By__r.Name}</td>
+        <td>{!contract.objGSOContract.Date_Approved__c}</td>
+        <td>{!contract.objGSOContract.Approval_Comment__c}</td>
+        </tr>
+    </apex:repeat>
+    </table>
+</apex:component>

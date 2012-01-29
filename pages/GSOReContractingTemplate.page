@@ -1,0 +1,34 @@
+<apex:page showHeader="false" sidebar="false" id="GSOReContractingTemplate">
+<html>
+<head>
+<title>GSOSalesforce Re-Contracting</title>
+<apex:stylesheet value="{!URLFOR($Resource.PSGSalesforce, '/PSGSFGlobalStyleCSS.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.PSGSalesforce, '/PSGSFSecondaryStyleCSS.css')}"/>
+</head>
+<body>
+<div id="wrapper">
+        <span id="j_id0:j_id6"> 
+            <div id="header"> 
+                <a href="/" title="Home"> 
+                <apex:image url="{!URLFOR($Resource.PSGSalesforce, '/PSGSF_Header_Left.gif')}" onclick="window.location.href='/'"/>
+                <apex:image url="{!URLFOR($Resource.PSGSalesforce, '/PSGSF_Header_Right.jpg')}" onclick="window.location.href='/'"/>
+                </a> 
+            </div>
+        </span> 
+    <div id="container">
+        <div>    
+            <apex:insert name="body">                
+            </apex:insert>   
+        </div>  
+    </div>
+    
+        <span id="j_id0:j_id27"> 
+            <div id="footer"> 
+                <p style="text-align:center;font-size:X-Small;font:Arial, Helvetica, sans-serif;"> 
+                &copy; {!year(today())} Expedia, Inc. All rights reserved.</p> 
+            </div>
+        </span> 
+</div>
+</body>
+</html>
+</apex:page>

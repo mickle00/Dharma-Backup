@@ -1,0 +1,67 @@
+<apex:page controller="sitesVFReContracting" showheader="false" sidebar="false" action="{!VerifyAuthentication}" cache="false">
+  <apex:composition template="GSOReContractingTemplate">
+    <apex:define name="body">
+    <br/>
+    <apex:form >
+    <apex:pageMessages />
+    <apex:pageBlock title="Re-Contracting Terms">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Previous" action="{!goToStep1}"/>
+            <apex:commandButton value="Preview" action="{!goToStep3}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection columns="1" title="Fill out applicable commercial terms" collapsible="false">
+            <apex:outputPanel id="Terms">
+                <table cellpadding="5">
+                    <apex:repeat value="{!AvailableTerms}" var="parent">
+                        <tr>
+                            <td><apex:outputLabel value="{!parent.Term.Description__c}"/></td>
+                            <td>
+                                <apex:outputPanel styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!parent.Required}"/>
+                                <apex:inputText value="{!parent.SelectedValue}" rendered="{!NOT parent.RenderSelectList}" maxlength="3" style="width:25px;"/>
+                                <apex:selectList value="{!parent.SelectedValue}" multiselect="false" size="1" rendered="{!parent.RenderSelectList}" style="width:100%;">
+                                    <apex:selectOptions value="{!parent.TermValues}"></apex:selectOptions>
+                                    <apex:actionSupport event="onchange" reRender="Terms" action="{!parent.onChangeofTerms}"/>
+                                </apex:selectList>
+                                <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(parent.ValidInput = false, true, false)}">
+                                    <strong>Error:</strong> You must enter a valid value.
+                                </apex:outputPanel>
+                                </apex:outputPanel>
+                            </td>
+                        </tr>
+                        <apex:repeat value="{!parent.childTerms}" var="child">
+                            <tr style="display:{!IF(parent.DisplayChild == false , 'none', '')};">
+                                <td><apex:outputLabel value="{!child.Term.Description__c}"/></td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!child.Required}"/>
+                                    <apex:inputText value="{!child.SelectedValue}" rendered="{!NOT child.RenderSelectList}" maxlength="3" style="width:25px;"/>
+                                    <apex:selectList value="{!child.SelectedValue}" multiselect="false" size="1" rendered="{!child.RenderSelectList}" style="width:100%;">
+                                        <apex:selectOptions value="{!child.TermValues}"></apex:selectOptions>
+                                        <apex:actionSupport event="onchange" reRender="Terms" action="{!child.onChangeofTerms}"/>
+                                    </apex:selectList>
+                                    <apex:outputPanel styleClass="errorMsg" layout="block" rendered="{!IF(child.ValidInput = false, true, false)}">
+                                        <strong>Error:</strong> You must enter a valid value.
+                                    </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </apex:repeat>
+                </table>
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Additional Information" collapsible="false" rendered="false">
+            <apex:outputPanel >
+                <apex:outputLabel value="{!$ObjectType.GSOContract__c.Fields.Supplier_Training_by_Market_Manager__c.Label}"/>
+                <apex:inputCheckbox value="{!SupplierTrainingByMM}"/>
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    </apex:form>
+    </apex:define>
+  </apex:composition>
+</apex:page>

@@ -1,0 +1,13 @@
+<apex:page controller="sitesVFReContracting" showheader="false" sidebar="false" action="{!VerifyAuthentication}">
+  <apex:composition template="GSOReContractingTemplate">
+    <apex:define name="body">
+    <br/>
+    <apex:pageBlock title="Re-Contracting Confirmation">
+        <apex:pageBlockSection columns="1">    
+        <apex:outputLabel rendered="{!ApprovalRequired == false}">Recontracting has been sent to hotel.</apex:outputLabel>
+        <apex:outputLabel rendered="{!ApprovalRequired == true}">Recontracting has been submitted for approval.</apex:outputLabel>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:define>
+  </apex:composition>
+</apex:page>

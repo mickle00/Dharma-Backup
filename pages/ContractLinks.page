@@ -1,0 +1,34 @@
+<apex:page standardController="Account" showHeader="FALSE" sidebar="FALSE">
+  <style type="text/css">
+    body {
+         padding-left: 30px;
+         padding-top: 5px;
+    }
+ 
+    a {
+         font: 12px Tahoma, Arial, Verdana;
+         color: blue; 
+    }
+ 
+  </style>
+    <table>
+      <tr>
+        <td style="font: 14px Arial, Verdana, Tahoma;"><b><i>Expedia Contract Details</i></b></td>
+        <td width="30px">&nbsp;</td>
+        <td style="font: 11px Arial, Verdana;">
+          <i>View stored contracts: </i>
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_2003__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_2003__c!=''}" value="2003" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_2004__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_2004__c!=''}" value="2004" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_2005__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_2005__c!=''}" value="2005" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_2006__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_2006__c!=''}" value="2006" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_2007__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_2007__c!=''}" value="2007" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_2008__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_2008__c!=''}" value="2008" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_2009__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_2009__c!=''}" value="2009" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_2010__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_2010__c!=''}" value="2010" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_Upside_2011__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_Upside_2011__c!=''}" value="2011" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.Contract_Manager_Upside_2012__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.Contract_Manager_Upside_2012__c!=''}" value="2012" /></a>&nbsp;&nbsp;
+          <a href="#" onclick= "window.open('https://contracts.expedia.com/sfconnect/?token=JE@865_up!cosv==&contractNumber={!Account.EQC_Addendum_CM__c}', 'imgwindow', 'width=715,height=200,left=200,top=5,scrollbars,resizable'); return false;"><apex:outputText rendered="{!Account.EQC_Addendum_CM__c!=''}" value="EQC Addendum" /></a>&nbsp;&nbsp;
+        </td>
+      </tr>
+    </table>    
+</apex:page>

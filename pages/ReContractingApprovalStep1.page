@@ -1,0 +1,31 @@
+<apex:page controller="sitesReContractingApproval" action="{!VerifyAuthentication}" cache="false" showHeader="false" sidebar="false">
+  <apex:composition template="GSOReContractingTemplate">
+    <apex:define name="body">
+    <br/>  
+    <apex:form >
+    <apex:pageMessages />
+    <apex:pageBlock title="Re-Contracting">
+        <apex:pageBlockTable value="{!Submissions}" var="submission" rendered="{!Submissions.size > 0}">
+            <apex:column >
+                <apex:outputLink value="/apex/ReContractingApprovalStep2">{!submission.Name}
+                    <apex:param name="id" value="{!submission.Id}"/>
+                    <apex:param name="MM" value="{!PSGUser.Email__c}"/>
+                </apex:outputLink>
+            </apex:column>
+            <apex:column value="{!submission.CreatedDate}"/>
+            <apex:column value="{!submission.PSG_User__r.Name}" headerValue="Market Manager"/>
+            <apex:column value="{!submission.Market_Manager_Email__c}"/>
+            <apex:column headerValue="Hotels">
+                <apex:pageBlockTable value="{!submission.GSOContracts__r}" var="contract">
+                    <apex:column value="{!contract.Account__r.Expedia_Hotel_Id__c}"/>
+                    <apex:column value="{!contract.Account__r.Name}" headerValue="Hotel Name"/>
+                </apex:pageBlockTable>
+            </apex:column>
+        </apex:pageBlockTable>
+        
+        <apex:outputLabel value="There are no submissions pending approval." rendered="{!Submissions.size == 0}"></apex:outputLabel>
+    </apex:pageBlock>
+    </apex:form>
+    </apex:define>
+  </apex:composition>    
+</apex:page>

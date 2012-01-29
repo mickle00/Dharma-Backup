@@ -1,0 +1,31 @@
+<apex:page standardController="Account" showHeader="FALSE" sidebar="FALSE">
+  <style type="text/css">
+    a {
+      font: 11px Arial, Verdana, Tahoma;
+      color:blue;
+    }
+ 
+    body {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 30px;
+    }
+  </style>
+  <span style="font: 14px Arial, Verdana, Tahoma;color:#4C4C4F;">  
+     <b><i>Venere/EEM Links &amp; Information</i></b>
+  </span>
+  <center>
+    <apex:outputPanel rendered="{!Account.Venere_Id__c!=''}">
+      <a title="Contract Management" href="https://adm-ext.venere.com/adm/contracts/index.php?action=show_property_result&property_id={!Account.Venere_ID__c}" target="_Blank">Contract Management</a>&nbsp;&nbsp;
+      <a title="Property Card" href="https://adm-ext.venere.com/adm/properties_assistance/index.php?action=contact_property_card&property_id={!Account.Venere_ID__c}&view=1" target="_Blank">Property Card</a>&nbsp;&nbsp;
+      <a title="Property Administration" href="https://adm-ext.venere.com/adm/dbadm/fmod.php?id={!Account.Venere_ID__c}&view=1" target="_Blank">Property Administration</a>&nbsp;&nbsp;
+      <a title="Venere/EEM Extranet" href="https://adm-ext.venere.com/cgi/property/index.php?group=home&hotel_id={!Account.Venere_ID__c}" target="_Blank">Agency Extranet</a>&nbsp;&nbsp;
+      <a title="Website Description" href="http://www.venere.com/hotel/index.php?htid={!Account.Venere_ID__c}&adm=1&flush_cache=1" target="_Blank">Website Preview</a>&nbsp;&nbsp;
+      <a title="Set Password" href="https://adm-ext.venere.com/adm/properties_assistance/index.php?action=change_pwd_form" target="_Blank">Set Password</a>&nbsp;&nbsp;
+      <a title="Sales Marketplace" href="https://adm-ext.venere.com/adm/market_place/index.php?action=view_property_data&hotel_id={!Account.Venere_ID__c}" target="_blank">Sales Marketplace</a>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!Account.Venere_Id__c==''}">
+      <span style="font: 11px Arial, Verdana, Tahoma;color:#4C4C4F;">No Venere hotel id exists for this property.</span>
+    </apex:outputPanel>
+  </center>  
+</apex:page>
