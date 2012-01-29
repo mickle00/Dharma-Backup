@@ -1,0 +1,4705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Guest Object</description>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Age_days__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Closed__c , Closed_Date_Time__c -CreatedDate,NOW()-CreatedDate)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Age (days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_range__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Age_days__c&lt;1,&quot;0-24 hours&quot;, 
+IF(Age_days__c&lt;2,&quot;24-48 hours&quot;, 
+IF(Age_days__c&lt;3,&quot;48-72 hours&quot;,
+&quot;&gt;72 hours&quot;
+)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Age (range)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alternate_Hotel_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>Suggested Hotel Contact</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Guests (Suggested Hotel Contact)</relationshipLabel>
+        <relationshipName>Guests2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Alternate_Vendor__c</fullName>
+        <externalId>false</externalId>
+        <label>Suggested Hotel</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Guests (Suggested Hotel)</relationshipLabel>
+        <relationshipName>Guests1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Arrival_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Arrival Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Office__c</fullName>
+        <externalId>false</externalId>
+        <label>Assigned Office</label>
+        <picklist>
+            <picklistValues>
+                <fullName>EMEA - Egencia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Germany</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Italy</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kuala Lumpur – APAC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Melbourne</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>United States - APAC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>United States - EMEA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kuala Lumpur – NA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prague – NA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prague – EMEA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Auto_Notification_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Auto Notification Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Started</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stopped</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Booking_Net_Difference__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(ISPICKVAL(Difference_Absorbed_By__c,&quot;Cancellation&quot;),New_Booking_Total__c &gt; 0),(New_Booking_Total__c - Customer_Payout_Amount__c) - Original_Booking_Total__c,0) + Trans_Parking_Fees__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Booking Net Difference</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Booking_Site__c</fullName>
+        <externalId>false</externalId>
+        <label>Booking Site</label>
+        <picklist>
+            <picklistValues>
+                <fullName>APAC Affiliate (OU4014)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>APAC Brand (OU4004)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Archive - Hong Kong</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Archive - WWTE Denmark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Archive - WWTE France</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Archive - WWTE Germany</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Archive - WWTE Norway</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Australia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canada Brand (OU4003)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corporate Travel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Domestic Affiliate (OU4013)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Domestic Brand (OU 4001)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Domestic Flanker (OU4015)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Domestic Other (OU4012)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>E4TA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN APAC USD (TPID 5200)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Australia AUD (TPID 5201)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Brazil BRL (TPID 5003)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Canada CAD (TPID 5002)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN China CNY (TPID 5208)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Denmark DKK (TPID 5110)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN EMEA EUR (TPID 5180)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN EMEA USD (TPID 5100)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Germany EUR (TPID 5102)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Hong Kong HKD (TPID 5205)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN India INR (TPID 5202)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Israel ILS (TPID 5113)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Italy EUR (TPID 5103)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Japan JPY (TPID 5203)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Korea KRW (TPID 5207)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN LATAM USD (TPID 5000)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Mexico MXN (TPID 5004)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Netherlands EUR (TPID 5105)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN New Zealand NZD (TPID 5204)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Norway NOK (TPID 5109)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Russia RUB (TPID 5112)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Singapore SGD (TPID 5206)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Spain Eur (TPID 5104)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Sweden SEK (TPID 5107)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN Switzerland CHF (TPID 5111)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN UK GBP (TPID 5101)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN US Hotels Fee Mimic USD (TPID 5090)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EAN US USD (TPID 5001)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ECT Europe (OU3200)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ECT Germany (OU3250)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ECT UK (OU3240)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>eLong</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EMEA Affiliate (OU4011)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EMEA Brand (OU4002)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>English/Euro</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Eurostar BE</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Eurostar FR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Eurostar UK</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia.co.jp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia.com</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia.fr</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia.it</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia.nl</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia.se</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Australia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Canada</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Corporate - Canada</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia ES</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Germany</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia India</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Ireland</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Japan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Japan Lite (IAN)/JPOS (OU1404)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Malaysia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Mexico (TPID 12)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia New Zealand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia Singapore</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia UK</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia US</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>FastTracker (TPID 30030)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels.com</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels.com (US)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels.com en Espanol (OU4006)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels APAC USD (TPID 3200)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Australia AUD (TPID 3201)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Brazil BRL (TPID 3003)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Canada CAD (TPID 3002)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels China CNY (TPID 3208)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Denmark DKK (TPID 3110)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels EMEA EUR (TPID 3180)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels EMEA USD (TPID 3100)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Germany EUR (TPID 3102)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Hong Kong HKD (TPID 3205)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels India INR (TPID 3202)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Israel ILS (TPID 3113)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Italy EUR (TPID 3103)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Japan JPY (TPID 3203)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Korea KRW (TPID 3207)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels LATAM USD (TPID 3000)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Mexico MXN (TPID 3004)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Netherlands EUR (TPID 3105)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels New Zealand NZD (TPID 3204)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Norway NOK (TPID 3109)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Russia RUB (TPID 3112)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Singapore SGD (TPID 3206)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Spain EUR (TPID 3104)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Sweden SEK (TPID 3107)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels Switzerland CHF (TPID 3111)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotels UK GBP (TPID 3101)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotel Systems Management (Nepal)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotwire</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IAN (Hotels.com)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IAN Affiliates</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IANPackages.com (TPID 30024)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Latin America Brand (OU4005)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>luxury.com</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other (Europe)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ThankYou Online Burn</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProduct #30017</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Travel Product ID (8002)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Travel Product ID (8003)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Travel Product ID (8004)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Travel Product ID (8005)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Travel Product ID (8006)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Travel Product ID (8008)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Travel Product ID (8040)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Travel Product ID (8041)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60003</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60006</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60008</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60009</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60010</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60011</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60013</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60020</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60035</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60080</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60081</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60082</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TravelProductID #60083</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Venere</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>voyages-sncf.com</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WTL EAN CHF (TPID 4811)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WTL EAN EUR (TPID 4880)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WTL EAN GBP (TPID 4801)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WTL EAN USE (TPID 4800)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WTL Hotels CHF (TPID 4711)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WTL Hotels EUR (TPID 4780)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WTL Hotels GBP (TPID 4701)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WTL Hotels USD (TPID 4700)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE (Expedia.com)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE AARP (TPID 30029)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Airtran Vacations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Alaska Airlines</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE American Airlines</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Australia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Canada</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE CHA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Denmark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Euro</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Germany</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Hong Kong</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Hyatt Vacations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE India</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Italy</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE National Airlines</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE NL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Norway</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Sam&apos;s Club Travel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Singapore</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Spain</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Sweden</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE UK</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE US</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WWTE Wyndham Vacations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CS_Supervisor_Cost_Approval__c</fullName>
+        <externalId>false</externalId>
+        <label>CS Supervisor Cost Approval</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Needs Approval</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Guests</relationshipLabel>
+        <relationshipName>Guests</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Check_In_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(MONTH(Arrival_Date__c))&amp;&quot;/&quot;&amp;TEXT(DAY(Arrival_Date__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Check-In (formula)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Check_Out_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Check-Out Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Closed_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Closed Date/Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Closed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Closed</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Coupon_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Coupon Amount</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Payout_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Payout Amount</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_TUID__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer TUID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Difference_Absorbed_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Difference Absorbed By</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Cancellation - Standard</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancellation - Natural Disaster</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancellation-Front Line CS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Decision Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Eviivo Corporate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expedia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shared Hotel &amp; Expedia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotel Corporate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Original Rate Accepted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Walk</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Walk with Quest Compensation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>N/A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Expedia_Booking_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Expedia Booking ID</label>
+        <length>9</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_Guest_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>ID from PSG</description>
+        <externalId>true</externalId>
+        <label>External Guest Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Guest_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Guest Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guest_Record_Closed_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Guest Record Closed Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Hotel_Confirmation_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Hotel Confirmation Number</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hotel_Shared_Cost__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(AND( Booking_Net_Difference__c &gt; 0, 
+OR(ISPICKVAL(Difference_Absorbed_By__c, &quot;Shared Hotel &amp; Expedia-DO NOT USE YET!&quot;),ISPICKVAL(Difference_Absorbed_By__c, &quot;Shared Hotel &amp; Expedia&quot;))),
+((Booking_Net_Difference__c *  
+(CASE(Paid_by_Hotel__c,&quot;10%&quot;,10,&quot;20%&quot;,20,&quot;30%&quot;,30,&quot;40%&quot;,40,&quot;50%&quot;,50,&quot;60%&quot;,60,&quot;70%&quot;,70,&quot;80%&quot;,80,&quot;90%&quot;,90,&quot;100%&quot;,100,100))
+/ 100)) , 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Hotel Shared Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Initial_Guest_Contact_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Initial Guest Contact Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Internal_Relocation_Case_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Internal Relocation Case Notes</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Language__c</fullName>
+        <externalId>false</externalId>
+        <label>Language</label>
+        <referenceTo>Language__c</referenceTo>
+        <relationshipLabel>Guests</relationshipLabel>
+        <relationshipName>Guests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Last_4_Digits_of_CC__c</fullName>
+        <externalId>false</externalId>
+        <label>Last 4 Digits of CC</label>
+        <length>4</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Modified_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <formula>LastModifiedDate</formula>
+        <label>Last Modified Date/Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Lodging_Operations_Agent_Lookup__c</fullName>
+        <description>Lookup to users who are HPS - Lodge Ops</description>
+        <externalId>false</externalId>
+        <label>Lodging Operations Agent</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Guests1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Booking_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>New Booking Net Cost</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>New_Booking_Total__c</fullName>
+        <externalId>false</externalId>
+        <formula>New_Booking_Rate__c  +  Other_Relocation_Cost__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>New Booking Total (Net Cost)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>New_Expedia_Booking_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>New Expedia Booking ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>New_Hotel_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>New Hotel Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Guests</relationshipLabel>
+        <relationshipName>Guests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Hotel_Name_if_out_of_network__c</fullName>
+        <externalId>false</externalId>
+        <label>Out of Network Hotel Information</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>New_Room_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>New Room Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>New_Taxes_Fees__c</fullName>
+        <externalId>false</externalId>
+        <label>New Taxes &amp; Fees</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>New_Vendor__c</fullName>
+        <externalId>false</externalId>
+        <label>New Hotel</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Guests</relationshipLabel>
+        <relationshipName>Guests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Nights__c</fullName>
+        <externalId>false</externalId>
+        <formula>Check_Out_Date__c  -  Arrival_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Nights</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opaque_Booking__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Opaque Booking</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Original_Book_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Book Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Original_Booking_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Booking Net Cost</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Original_Booking_Total__c</fullName>
+        <externalId>false</externalId>
+        <formula>Original_Booking_Rate__c  +  Original_Taxes_Fees__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Original Booking Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Original_Hotel_Confirmation__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Hotel Confirmation#</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Original_Hotel_Email_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Hotel Email Notes</label>
+        <length>510</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Original_Hotel_Vendor_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>( Case__r.Account.Expedia_Hotel_Id__c )</formula>
+        <label>Original Hotel Vendor ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Original_Room_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Room Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Original_Taxes_Fees__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Taxes &amp; Fees</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Other_Relocation_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Relocation Cost</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>PGI_Job_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>PGI Job ID</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Paid_by_Expedia__c</fullName>
+        <externalId>false</externalId>
+        <label>% Paid by Expedia</label>
+        <picklist>
+            <picklistValues>
+                <fullName>10%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>30%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>40%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>50%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>60%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>70%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>80%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>90%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Paid_by_Hotel__c</fullName>
+        <externalId>false</externalId>
+        <label>% Paid by Hotel</label>
+        <picklist>
+            <picklistValues>
+                <fullName>10%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>30%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>40%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>50%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>60%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>70%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>80%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>90%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Person_Who_Confirmed_Availability__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the person who confirmed availability at the new location.</inlineHelpText>
+        <label>Person Who Confirmed Availability</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <externalId>false</externalId>
+        <formula>Text( Case__r.Priority )</formula>
+        <label>Priority</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proposed_Vendor_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Vendor ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relocation_Cost__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Booking_Net_Difference__c&lt;0,&quot;0&quot;,TEXT(ROUND(Booking_Net_Difference__c,2)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This field sets the Booking Net Difference field to &quot;0&quot; if the difference is less than &quot;0&quot;. If more than &quot;0&quot;, it rounds the number to 2 decimal places. Used for internal calculations.</inlineHelpText>
+        <label>Relocation Cost</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relocation_Email_New_Property_Details__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( New_Vendor__c ),
+  New_Hotel_Name_if_out_of_network__c ,
+    New_Vendor__r.Name &amp; BR() &amp;  New_Vendor__r.BillingStreet &amp; BR() &amp; New_Vendor__r.BillingCity &amp;&quot;, &quot;&amp;                    New_Vendor__r.BillingState &amp;&quot;, &quot;&amp;  New_Vendor__r.BillingPostalCode  &amp;BR () &amp;  New_Vendor__r.BillingCountry  &amp; BR() &amp;    New_Vendor__r.Phone )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Relocation Email New Property Details</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relocation_Reason__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Case__r.Relocation_Reason__c )</formula>
+        <label>Relocation Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relocation_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Text(Case__r.Relocation_Type__c)</formula>
+        <label>Relocation Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Researching</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Waiting for Hotel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Waiting for Market Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Waiting for Customer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Waiting for Legal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Response Submitted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reassigned to Europe CS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Credit Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Accommodated at Original Hotel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reassigned to APAC CS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Submit_Response__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot;&amp;Id&amp;&quot;/e?retURL=%2F&quot;&amp;Id&amp;&quot;&amp;00N50000001R67f=Response%20Submitted&quot;,&quot;Submit Response&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submit Response</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_to_Arrival__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Arrival_Date__c&lt;TODAY(),&quot;Past&quot;,IF(Arrival_Date__c-TODAY() &gt;3,&quot;&gt;72 hours&quot;,IF(Arrival_Date__c-TODAY()&gt;2,&quot;48-72 hours&quot;,IF(Arrival_Date__c-TODAY()&gt;1,&quot;24-48 hours&quot;,&quot;0-24 hours&quot;))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Time to Arrival</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Title_Person_Confirmed_Availability__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Title of person who confirmed availability</inlineHelpText>
+        <label>Title of Person Confirmed Availability</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Trans_Parking_Fees__c</fullName>
+        <externalId>false</externalId>
+        <label>Trans/Parking Fees</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Travel_Product__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Booking Site</inlineHelpText>
+        <label>Travel Product</label>
+        <referenceTo>Travel_Product__c</referenceTo>
+        <relationshipLabel>Guests</relationshipLabel>
+        <relationshipName>Guests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <externalId>false</externalId>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Guests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Was_Expedia_CC_used__c</fullName>
+        <externalId>false</externalId>
+        <label>Was Expedia CC Used</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Wholesaler_Bed_Bank_Representation__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Case__r.Account.Wholesaler_Bed_bank_representation__c = TRUE, 
+&quot;DO NOT CONTACT THE PROPERTY DIRECTLY. USE THE CONTACT SECTION FOR THE PROPERTY IN SALESFORCE.&quot;, 
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Wholesaler/Bed Bank Representation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Guest</label>
+    <listViews>
+        <fullName>All_Guests</fullName>
+        <columns>NAME</columns>
+        <columns>Case__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Last_Modified_Date_Time__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Guests</label>
+    </listViews>
+    <listViews>
+        <fullName>Guest_Contact_All_Offices</fullName>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Language__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>Status__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Case__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS</value>
+        </filters>
+        <filters>
+            <field>Case__c</field>
+            <operation>notEqual</operation>
+            <value>01524808</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>Past</value>
+        </filters>
+        <label>Guest Contact - All Offices</label>
+    </listViews>
+    <listViews>
+        <fullName>Guest_Contact_KL</fullName>
+        <columns>Case__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Status__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Original_Booking_Rate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Reassigned to Europe CS,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>Kuala Lumpur – NA</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Guest Contact - KL</label>
+    </listViews>
+    <listViews>
+        <fullName>Guest_Contact_Prague</fullName>
+        <columns>Case__c</columns>
+        <columns>Language__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Booking_Site__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>Prague – NA,Prague – EMEA</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Guest Contact - Prague</label>
+    </listViews>
+    <listViews>
+        <fullName>Guest_Contact_United_States_New</fullName>
+        <columns>NAME</columns>
+        <columns>Age_days__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Status__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Case__c</columns>
+        <columns>Language__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Reassigned to Europe CS,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States,United States - EMEA,United States - APAC</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Case__c</field>
+            <operation>notEqual</operation>
+            <value>01524808</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>Past</value>
+        </filters>
+        <label>Guest Contact - United States - New</label>
+    </listViews>
+    <listViews>
+        <fullName>Guest_Contact_United_States_Past</fullName>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Case__c</columns>
+        <columns>Status__c</columns>
+        <columns>Language__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Booking_Site__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Reassigned to Europe CS,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States,United States - APAC,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Case__c</field>
+            <operation>notEqual</operation>
+            <value>United States,United States - APAC,United States - EMEA</value>
+        </filters>
+        <label>Guest Contact - United States - Past</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_All_Offices</fullName>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Language__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>Status__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Case__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS</value>
+        </filters>
+        <filters>
+            <field>Case__c</field>
+            <operation>notEqual</operation>
+            <value>01524808</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>Past</value>
+        </filters>
+        <label>Relocation - All Offices</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Arrival_0_24_Hours_English</fullName>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Auto_Notification_Status__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Status__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Language__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Age_range__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Relocation-Arrival=0-24 Hours (English)</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Arrival_0_24_Hours_Non_Eng</fullName>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Language__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Case__c</columns>
+        <columns>Status__c</columns>
+        <columns>Priority__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS,Submitted</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>0-24 hours</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>notEqual</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Language__c</field>
+            <operation>notEqual</operation>
+            <value>English</value>
+        </filters>
+        <label>Relocation-Arrival=0-24 Hours (Non-Eng)</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Arrival_48_72_Hours</fullName>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Status__c</columns>
+        <columns>Language__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Priority__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS,Submitted</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>48-72 hours</value>
+        </filters>
+        <filters>
+            <field>Booking_Site__c</field>
+            <operation>notEqual</operation>
+            <value>Venere</value>
+        </filters>
+        <label>Relocation-Arrival=48-72 Hours</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Arrival_Within_24_Hours</fullName>
+        <columns>NAME</columns>
+        <columns>Alternate_Vendor__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Assigned_Office__c</columns>
+        <columns>Check_In_formula__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Guest_Email__c</columns>
+        <columns>Language__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Accommodated at original hotel,Completed,Reassigned to APAC CS</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>0-24 hours</value>
+        </filters>
+        <label>Relocation Arrival Within 24 Hours</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_French</fullName>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <columns>Case__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Priority__c</columns>
+        <columns>NAME</columns>
+        <columns>Language__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <columns>Age_days__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Language__c</field>
+            <operation>equals</operation>
+            <value>French</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>notEqual</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>Past</value>
+        </filters>
+        <filters>
+            <field>Booking_Site__c</field>
+            <operation>notEqual</operation>
+            <value>Venere</value>
+        </filters>
+        <label>Relocation - French</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Future_Age_0_4_Days</fullName>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 and 6</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Status__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Case__c</columns>
+        <columns>Language__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Priority__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Submitted,Completed,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Age_days__c</field>
+            <operation>lessThan</operation>
+            <value>5</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>past</value>
+        </filters>
+        <filters>
+            <field>Booking_Site__c</field>
+            <operation>notEqual</operation>
+            <value>Venere</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>&gt;72 Hours</value>
+        </filters>
+        <label>Relocation - Future (Age 0-4 Days)</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Future_Age_5_10_Days</fullName>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Age_days__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Language__c</columns>
+        <columns>Status__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Case__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Priority__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Submitted,Completed,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Age_days__c</field>
+            <operation>lessThan</operation>
+            <value>10</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>past</value>
+        </filters>
+        <filters>
+            <field>Booking_Site__c</field>
+            <operation>notEqual</operation>
+            <value>Venere</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>notEqual</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>&gt;72 Hours</value>
+        </filters>
+        <filters>
+            <field>Age_days__c</field>
+            <operation>greaterThan</operation>
+            <value>5</value>
+        </filters>
+        <label>Relocation - Future (Age 5-10 Days)</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Future_New</fullName>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 and 6</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Language__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>&gt;72 hours</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>Past</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>notEqual</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Booking_Site__c</field>
+            <operation>notEqual</operation>
+            <value>Venere</value>
+        </filters>
+        <label>Relocation - Future (New)</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Future_Past_SLA</fullName>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 and 6 and 7</booleanFilter>
+        <columns>NAME</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>Language__c</columns>
+        <columns>Case__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Accommodated at original hotel,Completed,Submitted</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>&gt;72 hours</value>
+        </filters>
+        <filters>
+            <field>Age_days__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>10</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>Past</value>
+        </filters>
+        <filters>
+            <field>Booking_Site__c</field>
+            <operation>notEqual</operation>
+            <value>Venere</value>
+        </filters>
+        <filters>
+            <field>Expedia_Booking_ID__c</field>
+            <operation>startsWith</operation>
+            <value>2</value>
+        </filters>
+        <label>Relocation - Future (Past SLA)</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_KL_Future</fullName>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Language__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Case__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Reassigned to Europe CS,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>Kuala Lumpur – APAC,Kuala Lumpur – NA,Melbourne</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>&gt;72 hours</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Relocation - KL Future</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_KL_Urgent</fullName>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Language__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Age_days__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Original_Booking_Rate__c</columns>
+        <columns>Case__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Reassigned to Europe CS,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>Kuala Lumpur – APAC,Melbourne,Kuala Lumpur – NA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>&gt;72 hours</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Relocation KL Urgent</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_New_Arrivals_0_24_Hours</fullName>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Language__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Age_days__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Original_Booking_Rate__c</columns>
+        <columns>Case__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Reassigned to Europe CS,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>Kuala Lumpur – APAC,Melbourne,Kuala Lumpur – NA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>&gt;72 hours</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Relocation - New Arrivals 0-24 Hours</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_New_Arrivals_24_72_Hours</fullName>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 and 6</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Language__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Case__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Auto_Notification_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>Past</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>lessThan</operation>
+            <value>72 hour</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>0-24 hours</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Relocation - New Arrivals 24-72 Hours</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Other_Languages</fullName>
+        <columns>NAME</columns>
+        <columns>Language__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Case__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Priority__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Language__c</field>
+            <operation>equals</operation>
+            <value>Arabic,Bahasa,Hindi,Malaysian,Russian,Unknown</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Booking_Site__c</field>
+            <operation>notEqual</operation>
+            <value>Venere</value>
+        </filters>
+        <label>Relocation - Other Languages</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Past_Dated</fullName>
+        <columns>NAME</columns>
+        <columns>Case__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Check_Out_Date__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Priority__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>Past</value>
+        </filters>
+        <filters>
+            <field>Case__c</field>
+            <operation>notEqual</operation>
+            <value>01524808</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Relocation - Past Dated</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Prague_Future</fullName>
+        <columns>Language__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>NAME</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Status__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Case__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Reassigned to Europe CS,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>Prague – NA,Prague – EMEA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>equals</operation>
+            <value>&gt;72 hours</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Relocation - Prague Future</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Prague_Urgent</fullName>
+        <columns>Case__c</columns>
+        <columns>Language__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>NAME</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Status__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Difference_Absorbed_By__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Original_Booking_Rate__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Reassigned to Europe CS,Accommodated at original hotel</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>Prague – NA,Prague – EMEA</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>&gt;72 hours</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Relocation - Prague Urgent</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Todays_Arrivals</fullName>
+        <columns>NAME</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Auto_Notification_Status__c</columns>
+        <columns>Status__c</columns>
+        <columns>Booking_Site__c</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Language__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Case__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS,Submitted</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Arrival_Date__c</field>
+            <operation>equals</operation>
+            <value>10/24/2011</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>notEqual</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <label>Relocation - Todays Arrivals</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_United_States</fullName>
+        <columns>Case__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>Time_to_Arrival__c</columns>
+        <columns>Priority__c</columns>
+        <columns>NAME</columns>
+        <columns>Language__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Status__c</columns>
+        <columns>Age_days__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Language__c</field>
+            <operation>equals</operation>
+            <value>Cantonese,Japanese,Korean,Mandarin,Thai,Vietnamese</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>notEqual</operation>
+            <value>Guest__c.HPS_Guest_Contact</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>Past</value>
+        </filters>
+        <label>Relocation - United States</label>
+    </listViews>
+    <listViews>
+        <fullName>Relocation_Venere</fullName>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>Language__c</columns>
+        <columns>Arrival_Date__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Expedia_Booking_ID__c</columns>
+        <columns>Case__c</columns>
+        <columns>Age_days__c</columns>
+        <columns>Priority__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Accommodated at original hotel,Reassigned to APAC CS</value>
+        </filters>
+        <filters>
+            <field>Assigned_Office__c</field>
+            <operation>equals</operation>
+            <value>United States - APAC,United States,United States - EMEA</value>
+        </filters>
+        <filters>
+            <field>Booking_Site__c</field>
+            <operation>equals</operation>
+            <value>Venere</value>
+        </filters>
+        <filters>
+            <field>Time_to_Arrival__c</field>
+            <operation>notEqual</operation>
+            <value>Past</value>
+        </filters>
+        <label>Relocation - Venere</label>
+    </listViews>
+    <nameField>
+        <label>Guest  Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Guests</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Client_Services_Relocations</fullName>
+        <active>true</active>
+        <label>Client Services Relocations</label>
+        <picklistValues>
+            <picklist>Assigned_Office__c</picklist>
+            <values>
+                <fullName>EMEA - Egencia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Italy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kuala Lumpur %E2%80%93 APAC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kuala Lumpur %E2%80%93 NA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Melbourne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prague %E2%80%93 EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prague %E2%80%93 NA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States - APAC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States - EMEA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Auto_Notification_Status__c</picklist>
+            <values>
+                <fullName>Started</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stopped</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Booking_Site__c</picklist>
+            <values>
+                <fullName>APAC Affiliate %28OU4014%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APAC Brand %28OU4004%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - Hong Kong</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - WWTE Denmark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - WWTE France</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - WWTE Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - WWTE Norway</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Australia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canada Brand %28OU4003%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Corporate Travel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domestic Affiliate %28OU4013%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domestic Brand %28OU 4001%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domestic Flanker %28OU4015%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domestic Other %28OU4012%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E4TA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN APAC USD %28TPID 5200%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Australia AUD %28TPID 5201%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Brazil BRL %28TPID 5003%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Canada CAD %28TPID 5002%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN China CNY %28TPID 5208%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Denmark DKK %28TPID 5110%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN EMEA EUR %28TPID 5180%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN EMEA USD %28TPID 5100%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Germany EUR %28TPID 5102%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Hong Kong HKD %28TPID 5205%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN India INR %28TPID 5202%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Israel ILS %28TPID 5113%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Italy EUR %28TPID 5103%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Japan JPY %28TPID 5203%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Korea KRW %28TPID 5207%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN LATAM USD %28TPID 5000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Mexico MXN %28TPID 5004%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Netherlands EUR %28TPID 5105%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN New Zealand NZD %28TPID 5204%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Norway NOK %28TPID 5109%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Russia RUB %28TPID 5112%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Singapore SGD %28TPID 5206%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Spain Eur %28TPID 5104%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Sweden SEK %28TPID 5107%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Switzerland CHF %28TPID 5111%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN UK GBP %28TPID 5101%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN US Hotels Fee Mimic USD %28TPID 5090%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN US USD %28TPID 5001%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECT Europe %28OU3200%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECT Germany %28OU3250%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECT UK %28OU3240%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Affiliate %28OU4011%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Brand %28OU4002%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>English%2FEuro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eurostar BE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eurostar FR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eurostar UK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Australia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Corporate - Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia ES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia India</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Ireland</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Japan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Japan Lite %28IAN%29%2FJPOS %28OU1404%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Malaysia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Mexico %28TPID 12%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia New Zealand</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Singapore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia UK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia US</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Eco%2Ejp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Efr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Eit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Enl</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Ese</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FastTracker %28TPID 30030%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotel Systems Management %28Nepal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels APAC USD %28TPID 3200%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Australia AUD %28TPID 3201%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Brazil BRL %28TPID 3003%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Canada CAD %28TPID 3002%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels China CNY %28TPID 3208%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Denmark DKK %28TPID 3110%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels EMEA EUR %28TPID 3180%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels EMEA USD %28TPID 3100%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Germany EUR %28TPID 3102%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Hong Kong HKD %28TPID 3205%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels India INR %28TPID 3202%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Israel ILS %28TPID 3113%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Italy EUR %28TPID 3103%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Japan JPY %28TPID 3203%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Korea KRW %28TPID 3207%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels LATAM USD %28TPID 3000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Mexico MXN %28TPID 3004%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Netherlands EUR %28TPID 3105%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels New Zealand NZD %28TPID 3204%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Norway NOK %28TPID 3109%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Russia RUB %28TPID 3112%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Singapore SGD %28TPID 3206%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Spain EUR %28TPID 3104%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Sweden SEK %28TPID 3107%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Switzerland CHF %28TPID 3111%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels UK GBP %28TPID 3101%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels%2Ecom %28US%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels%2Ecom en Espanol %28OU4006%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotwire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IAN %28Hotels%2Ecom%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IAN Affiliates</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IANPackages%2Ecom %28TPID 30024%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Latin America Brand %28OU4005%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Europe%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ThankYou Online Burn</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288002%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288003%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288004%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288005%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288006%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288008%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288040%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288041%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProduct %2330017</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360003</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360006</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360008</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360009</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360010</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360011</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360013</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360020</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360035</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360080</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360081</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360082</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360083</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Venere</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL EAN CHF %28TPID 4811%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL EAN EUR %28TPID 4880%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL EAN GBP %28TPID 4801%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL EAN USE %28TPID 4800%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL Hotels CHF %28TPID 4711%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL Hotels EUR %28TPID 4780%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL Hotels GBP %28TPID 4701%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL Hotels USD %28TPID 4700%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE %28Expedia%2Ecom%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE AARP %28TPID 30029%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Airtran Vacations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Alaska Airlines</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE American Airlines</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Australia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE CHA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Denmark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Euro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Hong Kong</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Hyatt Vacations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE India</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Italy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE NL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE National Airlines</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Norway</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Sam%27s Club Travel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Singapore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Spain</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Sweden</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE UK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE US</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Wyndham Vacations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>eLong</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>luxury%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>voyages-sncf%2Ecom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CS_Supervisor_Cost_Approval__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Difference_Absorbed_By__c</picklist>
+            <values>
+                <fullName>Cancellation - Natural Disaster</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancellation - Standard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancellation-Front Line CS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Decision Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eviivo Corporate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotel Corporate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Original Rate Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shared Hotel %26 Expedia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Walk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Walk with Quest Compensation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Paid_by_Expedia__c</picklist>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Paid_by_Hotel__c</picklist>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Accommodated at Original Hotel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Credit Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reassigned to APAC CS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reassigned to Europe CS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Researching</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Response Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting for Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting for Hotel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting for Legal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting for Market Management</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Was_Expedia_CC_used__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>HPS_Guest_Contact</fullName>
+        <active>true</active>
+        <label>HPS Guest Contact</label>
+        <picklistValues>
+            <picklist>Assigned_Office__c</picklist>
+            <values>
+                <fullName>EMEA - Egencia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Italy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kuala Lumpur %E2%80%93 APAC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kuala Lumpur %E2%80%93 NA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Melbourne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prague %E2%80%93 EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prague %E2%80%93 NA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States - APAC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States - EMEA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Auto_Notification_Status__c</picklist>
+            <values>
+                <fullName>Started</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stopped</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Booking_Site__c</picklist>
+            <values>
+                <fullName>APAC Affiliate %28OU4014%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APAC Brand %28OU4004%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - Hong Kong</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - WWTE Denmark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - WWTE France</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - WWTE Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Archive - WWTE Norway</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Australia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canada Brand %28OU4003%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Corporate Travel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domestic Affiliate %28OU4013%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domestic Brand %28OU 4001%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domestic Flanker %28OU4015%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domestic Other %28OU4012%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E4TA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN APAC USD %28TPID 5200%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Australia AUD %28TPID 5201%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Brazil BRL %28TPID 5003%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Canada CAD %28TPID 5002%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN China CNY %28TPID 5208%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Denmark DKK %28TPID 5110%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN EMEA EUR %28TPID 5180%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN EMEA USD %28TPID 5100%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Germany EUR %28TPID 5102%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Hong Kong HKD %28TPID 5205%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN India INR %28TPID 5202%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Israel ILS %28TPID 5113%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Italy EUR %28TPID 5103%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Japan JPY %28TPID 5203%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Korea KRW %28TPID 5207%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN LATAM USD %28TPID 5000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Mexico MXN %28TPID 5004%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Netherlands EUR %28TPID 5105%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN New Zealand NZD %28TPID 5204%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Norway NOK %28TPID 5109%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Russia RUB %28TPID 5112%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Singapore SGD %28TPID 5206%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Spain Eur %28TPID 5104%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Sweden SEK %28TPID 5107%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN Switzerland CHF %28TPID 5111%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN UK GBP %28TPID 5101%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN US Hotels Fee Mimic USD %28TPID 5090%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAN US USD %28TPID 5001%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECT Europe %28OU3200%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECT Germany %28OU3250%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECT UK %28OU3240%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Affiliate %28OU4011%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Brand %28OU4002%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>English%2FEuro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eurostar BE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eurostar FR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eurostar UK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Australia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Corporate - Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia ES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia India</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Ireland</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Japan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Japan Lite %28IAN%29%2FJPOS %28OU1404%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Malaysia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Mexico %28TPID 12%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia New Zealand</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia Singapore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia UK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia US</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Eco%2Ejp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Efr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Eit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Enl</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia%2Ese</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FastTracker %28TPID 30030%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotel Systems Management %28Nepal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels APAC USD %28TPID 3200%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Australia AUD %28TPID 3201%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Brazil BRL %28TPID 3003%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Canada CAD %28TPID 3002%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels China CNY %28TPID 3208%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Denmark DKK %28TPID 3110%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels EMEA EUR %28TPID 3180%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels EMEA USD %28TPID 3100%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Germany EUR %28TPID 3102%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Hong Kong HKD %28TPID 3205%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels India INR %28TPID 3202%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Israel ILS %28TPID 3113%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Italy EUR %28TPID 3103%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Japan JPY %28TPID 3203%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Korea KRW %28TPID 3207%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels LATAM USD %28TPID 3000%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Mexico MXN %28TPID 3004%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Netherlands EUR %28TPID 3105%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels New Zealand NZD %28TPID 3204%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Norway NOK %28TPID 3109%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Russia RUB %28TPID 3112%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Singapore SGD %28TPID 3206%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Spain EUR %28TPID 3104%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Sweden SEK %28TPID 3107%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels Switzerland CHF %28TPID 3111%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels UK GBP %28TPID 3101%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels%2Ecom %28US%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotels%2Ecom en Espanol %28OU4006%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotwire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IAN %28Hotels%2Ecom%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IAN Affiliates</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IANPackages%2Ecom %28TPID 30024%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Latin America Brand %28OU4005%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Europe%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ThankYou Online Burn</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288002%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288003%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288004%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288005%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288006%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288008%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288040%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel Product ID %288041%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProduct %2330017</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360003</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360006</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360008</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360009</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360010</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360011</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360013</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360020</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360035</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360080</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360081</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360082</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TravelProductID %2360083</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Venere</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL EAN CHF %28TPID 4811%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL EAN EUR %28TPID 4880%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL EAN GBP %28TPID 4801%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL EAN USE %28TPID 4800%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL Hotels CHF %28TPID 4711%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL Hotels EUR %28TPID 4780%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL Hotels GBP %28TPID 4701%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WTL Hotels USD %28TPID 4700%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE %28Expedia%2Ecom%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE AARP %28TPID 30029%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Airtran Vacations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Alaska Airlines</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE American Airlines</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Australia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE CHA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Denmark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Euro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Hong Kong</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Hyatt Vacations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE India</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Italy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE NL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE National Airlines</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Norway</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Sam%27s Club Travel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Singapore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Spain</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Sweden</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE UK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE US</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WWTE Wyndham Vacations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>eLong</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>luxury%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>voyages-sncf%2Ecom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CS_Supervisor_Cost_Approval__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Difference_Absorbed_By__c</picklist>
+            <values>
+                <fullName>Cancellation - Natural Disaster</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancellation - Standard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancellation-Front Line CS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Decision Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eviivo Corporate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expedia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotel Corporate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Original Rate Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shared Hotel %26 Expedia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Walk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Walk with Quest Compensation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Paid_by_Expedia__c</picklist>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Paid_by_Hotel__c</picklist>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Accommodated at Original Hotel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Credit Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reassigned to APAC CS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reassigned to Europe CS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Researching</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Response Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting for Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting for Hotel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting for Legal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting for Market Management</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Was_Expedia_CC_used__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Arrival_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>New_Vendor__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>New_Expedia_Booking_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Booking_Net_Difference__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Difference_Absorbed_By__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Guest_Email__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Exactly_9_Characters_Required</fullName>
+        <active>true</active>
+        <description>Enforces user entry of at least 9 fields when they input a Booking ID.</description>
+        <errorConditionFormula>IF(
+     AND(
+               Expedia_Booking_ID__c &lt;&gt; &quot;&quot;,
+               NOT($Profile.Name = &quot;API Only&quot;),
+               NOT($Profile.Name = &quot;System Administrator&quot;)
+     ), 
+     LEN( Expedia_Booking_ID__c)&lt;&gt;9
+, FALSE)</errorConditionFormula>
+        <errorDisplayField>Expedia_Booking_ID__c</errorDisplayField>
+        <errorMessage>Expedia Booking ID must be 9 characters. If you don&apos;t know the Booking ID, leave it blank.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Internal_Case_Notes_Required</fullName>
+        <active>false</active>
+        <description>The internal case note must be changed when the guest status is changed, and does not equal submitted.</description>
+        <errorConditionFormula>IF(ISPICKVAL(Status__c, &quot;Completed&quot;),FALSE,IF(AND(NOT(ISPICKVAL(Status__c, &quot;Submitted&quot;)), Internal_Relocation_Case_Notes__c=&quot;&quot;), TRUE, IF(AND(ISCHANGED(Status__c), NOT(ISCHANGED(Internal_Relocation_Case_Notes__c))) ,TRUE,FALSE)))</errorConditionFormula>
+        <errorDisplayField>Internal_Relocation_Case_Notes__c</errorDisplayField>
+        <errorMessage>Internal notes must be updated when the status is changed. Notes should be added at the top including a date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Language_required_if_status_complete</fullName>
+        <active>true</active>
+        <description>Language Spoken is required is the status is set to complete requested by Carrie Dutton on 3/22</description>
+        <errorConditionFormula>AND( 
+           ISPICKVAL(Status__c, &quot;Completed&quot;) , 
+           ISNULL(Language__c) ,
+           NOT($Profile.Name = &quot;API Only&quot;),
+           NOT($Profile.Name = &quot;System Administrator&quot;)
+)</errorConditionFormula>
+        <errorDisplayField>Language__c</errorDisplayField>
+        <errorMessage>Language Spoken is required if status is Completed</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_completion_if_absorption_pending</fullName>
+        <active>false</active>
+        <description>A guest record cannot be marked as &quot;complete&quot; if the decision regarding absorption is pending. DEACTIVATED as requested by Carrie Dutton 6/13/2008</description>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Difference_Absorbed_By__c,&quot;Decision Pending&quot;),ISPICKVAL(Status__c, &quot;Completed&quot;)),TRUE,FALSE)</errorConditionFormula>
+        <errorDisplayField>Difference_Absorbed_By__c</errorDisplayField>
+        <errorMessage>Guest status cannot be set to completed while &apos;Difference absorbed by&apos; is pending.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Percent_Paid_by_must_be_100</fullName>
+        <active>true</active>
+        <description>Insures that % paid by Expedia and % paid by Hotel equals 100% (Case Rule 01)</description>
+        <errorConditionFormula>AND(
+          ISPICKVAL(Difference_Absorbed_By__c, &quot;Shared Hotel &amp; Expedia&quot;),
+          NOT($Profile.Name = &quot;API Only&quot;),
+          NOT($Profile.Name = &quot;System Administrator&quot;),
+          if( 
+              CASE(Paid_by_Hotel__c,&quot;10%&quot;,10,&quot;20%&quot;,20,&quot;30%&quot;,30,&quot;40%&quot;,40,&quot;50%&quot;,50,&quot;60%&quot;,60,&quot;70%&quot;,70,&quot;80%&quot;,80,&quot;90%&quot;,90,&quot;100%&quot;,100,100) 
+              + 
+              CASE(Paid_by_Expedia__c,&quot;10%&quot;,10,&quot;20%&quot;,20,&quot;30%&quot;,30,&quot;40%&quot;,40,&quot;50%&quot;,50,&quot;60%&quot;,60,&quot;70%&quot;,70,&quot;80%&quot;,80,&quot;90%&quot;,90,&quot;100%&quot;,100,100) 
+              = 100
+             ,false 
+             ,true
+          )
+)</errorConditionFormula>
+        <errorDisplayField>Paid_by_Expedia__c</errorDisplayField>
+        <errorMessage>Combined Expedia and Hotel percents must equal 100%.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Was_CC_used_required_when_guest_complete</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+          ISPICKVAL (Was_Expedia_CC_used__c, &quot;&quot;), 
+          ISPICKVAL ( Status__c, &quot;Completed&quot;),
+          NOT($Profile.Name = &quot;API Only&quot;),
+          NOT($Profile.Name = &quot;System Administrator&quot;),
+          $RecordType.DeveloperName = &quot;Client_Services_Relocations&quot;
+)</errorConditionFormula>
+        <errorMessage>Please indicate Yes or No for the field &quot;Was Expedia Credit Card Used&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>checkout_date_rule</fullName>
+        <active>true</active>
+        <description>Check-out date must be greater than check-in date.</description>
+        <errorConditionFormula>AND(
+         Check_Out_Date__c  &lt;  Arrival_Date__c,
+         NOT($Profile.Name = &quot;API Only&quot;),
+         NOT($Profile.Name = &quot;System Administrator&quot;)
+)</errorConditionFormula>
+        <errorDisplayField>Check_Out_Date__c</errorDisplayField>
+        <errorMessage>Check-out date cannot be the same or before the arrival date.</errorMessage>
+    </validationRules>
+</CustomObject>

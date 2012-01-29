@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Approver_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver Email</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approver_Name__c</fullName>
+        <description>Used to get the Approver name in the Approval Notice email template</description>
+        <externalId>false</externalId>
+        <formula>Approver__r.Name</formula>
+        <label>Approver Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approver__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver</label>
+        <referenceTo>PSG_User__c</referenceTo>
+        <relationshipLabel>GSO Contract Submissions (Approver)</relationshipLabel>
+        <relationshipName>GSO_Contract_Submissions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contracts_Pending_Approval__c</fullName>
+        <description>Contracts Pending Approval</description>
+        <externalId>false</externalId>
+        <label>Contracts Pending Approval</label>
+        <summaryFilterItems>
+            <field>GSOContract__c.Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending Approval</value>
+        </summaryFilterItems>
+        <summaryForeignKey>GSOContract__c.GSO_Contract_Submission__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Contracts_Rejected__c</fullName>
+        <description>Number of contracts rejected</description>
+        <externalId>false</externalId>
+        <label>Contracts Rejected</label>
+        <summaryFilterItems>
+            <field>GSOContract__c.Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Rejected</value>
+        </summaryFilterItems>
+        <summaryForeignKey>GSOContract__c.GSO_Contract_Submission__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Market_Manager_Email__c</fullName>
+        <description>Market Manager Email</description>
+        <externalId>false</externalId>
+        <label>Market Manager Email</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_User__c</fullName>
+        <description>PSG User</description>
+        <externalId>false</externalId>
+        <label>PSG User</label>
+        <referenceTo>PSG_User__c</referenceTo>
+        <relationshipLabel>GSO Contract Submissions (PSG User)</relationshipLabel>
+        <relationshipName>Re_Contract_Submissions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <label>GSO Contract Submission</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PSG_User__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>S-{000000}</displayFormat>
+        <label>Submission Number</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>GSO Contract Submissions</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>PSG_User__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Approver__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

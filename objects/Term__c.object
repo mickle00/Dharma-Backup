@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Commercial Terms for re-contracting</description>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Commercial Term Description</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Commercial Term Description</inlineHelpText>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <description>Date the commercial term expires. Leave blank to keep the term open indefinitely.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date the commercial term expires. Leave blank to keep the term open indefinitely.</inlineHelpText>
+        <label>End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Max_Value__c</fullName>
+        <description>Maximum value used to trigger approval process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Maximum value used to trigger approval process</inlineHelpText>
+        <label>Max Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Min_Value__c</fullName>
+        <description>Minimum value used to trigger approval process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Minimum value used to trigger approval process</inlineHelpText>
+        <label>Min Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Term__c</fullName>
+        <description>Used to link related terms and determine whether child terms should be required.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used to link related terms and determine whether child terms should be required.</inlineHelpText>
+        <label>Parent Term</label>
+        <referenceTo>Term__c</referenceTo>
+        <relationshipLabel>Related Terms</relationshipLabel>
+        <relationshipName>Terms</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates whether the term is required</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates whether the term is required</inlineHelpText>
+        <label>Required</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sort_Order__c</fullName>
+        <description>Order in which the terms are displayed in the wizard</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Order in which the terms are displayed in the wizard</inlineHelpText>
+        <label>Sort Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <defaultValue>today()</defaultValue>
+        <description>Date that the commercial term is active</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date that the commercial term is active</inlineHelpText>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>When_To_Display__c</fullName>
+        <description>Determines if the term should be displayed based on the value selected for the parent term.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Determines if the term should be displayed based on the value selected for the parent term.</inlineHelpText>
+        <label>When To Display</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Term</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Start_Date__c</columns>
+        <columns>Description__c</columns>
+        <columns>End_Date__c</columns>
+        <columns>Parent_Term__c</columns>
+        <columns>Sort_Order__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>T-{000000}</displayFormat>
+        <label>Term Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Terms</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Start_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>End_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Parent_Term__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Start_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>End_Date__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>End_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Parent_Term__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

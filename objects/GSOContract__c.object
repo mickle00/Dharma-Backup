@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Account__c</fullName>
+        <description>Account</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>GSO Contracts</relationshipLabel>
+        <relationshipName>GSOContracts</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Additional_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Additional Status</label>
+        <picklist>
+            <controllingField>Status__c</controllingField>
+            <picklistValues>
+                <fullName>Affiliated to GSA</fullName>
+                <controllingFieldValues>Not Applicable</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Negotiated</fullName>
+                <controllingFieldValues>Not Applicable</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected ETP</fullName>
+                <controllingFieldValues>Not Applicable</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Exception market</fullName>
+                <controllingFieldValues>Not Applicable</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Comment__c</fullName>
+        <description>Approval Comment</description>
+        <externalId>false</externalId>
+        <label>Comment</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Approval_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if contract requires approval before being sent to ORT</description>
+        <externalId>false</externalId>
+        <label>Approval Required</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Status__c</fullName>
+        <description>Status of approval process</description>
+        <externalId>false</externalId>
+        <label>Approval Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Approved_By__c</fullName>
+        <description>Approved By</description>
+        <externalId>false</externalId>
+        <label>Approved By</label>
+        <referenceTo>PSG_User__c</referenceTo>
+        <relationshipLabel>GSO Contracts</relationshipLabel>
+        <relationshipName>GSO_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Bank_Account_Number__c</fullName>
+        <description>Bank Account Number</description>
+        <externalId>false</externalId>
+        <label>Bank Account Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bank_Name__c</fullName>
+        <description>Bank Name</description>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Batch_Size__c</fullName>
+        <description>Batch Size</description>
+        <externalId>false</externalId>
+        <label>Batch Size</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Contact_Email__c</fullName>
+        <description>Billing Contact Email</description>
+        <externalId>false</externalId>
+        <label>Billing Contact Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Contact_Fax__c</fullName>
+        <description>Billing Contact Fax</description>
+        <externalId>false</externalId>
+        <label>Billing Contact Fax</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Billing_Contact_First_Name__c</fullName>
+        <description>Billing Contact First Name</description>
+        <externalId>false</externalId>
+        <label>Billing Contact First Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Contact_Last_Name__c</fullName>
+        <description>Billing Contact Last Name</description>
+        <externalId>false</externalId>
+        <label>Billing Contact Last Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Contact_Phone__c</fullName>
+        <description>Billing Contact Phone</description>
+        <externalId>false</externalId>
+        <label>Billing Contact Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Cases_Closed__c</fullName>
+        <externalId>false</externalId>
+        <label>Cases Closed</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Contract_Loading</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotel_Systems_Technical_Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cases_Needed_for_Closure__c</fullName>
+        <description>Holds the type of cases that need to be closed before contract can be closed.  Used for status of conversion process and overall status</description>
+        <externalId>false</externalId>
+        <label>Cases Needed for Closure</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contract_Loading</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hotel_Systems_Technical_Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Contact_Submit__c</fullName>
+        <description>Contact Submit</description>
+        <externalId>false</externalId>
+        <label>Contact Submit</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <description>Contact</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>GSOContracts</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Signer_Title__c</fullName>
+        <description>Contract Signer Title</description>
+        <externalId>false</externalId>
+        <label>Contract Signer Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Signer__c</fullName>
+        <description>Contract Signer</description>
+        <externalId>false</externalId>
+        <label>Contract Signer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Term_months__c</fullName>
+        <defaultValue>24</defaultValue>
+        <description>Contract Term (months)</description>
+        <externalId>false</externalId>
+        <label>Contract Term (months)</label>
+        <precision>4</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_Abandoned__c</fullName>
+        <description>Date the EPC/ORT reported link expiration</description>
+        <externalId>false</externalId>
+        <label>Date Abandoned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_Approved__c</fullName>
+        <description>Approved Date/Time</description>
+        <externalId>false</externalId>
+        <formula>CASE( Approval_Status__c , 
+&apos;Approved&apos;, Now(), 
+&apos;Rejected&apos;, Now(), 
+NULL )</formula>
+        <label>Date Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Date_Commercial_Terms_First_Viewed__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Commercial Terms First Viewed</label>
+        <summarizedField>EPC_Activity__c.Date_of_Activity__c</summarizedField>
+        <summaryFilterItems>
+            <field>EPC_Activity__c.EPC_Section__c</field>
+            <operation>equals</operation>
+            <value>Commercial Terms</value>
+        </summaryFilterItems>
+        <summaryForeignKey>EPC_Activity__c.GSO_Contract__c</summaryForeignKey>
+        <summaryOperation>min</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Date_Contract_Completed__c</fullName>
+        <description>Date overall status was set to complete</description>
+        <externalId>false</externalId>
+        <label>Date Contract Completed</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Date_Contract_Started__c</fullName>
+        <defaultValue>Today()</defaultValue>
+        <description>Contract Start Date</description>
+        <externalId>false</externalId>
+        <label>Date Contract Started</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_EPC_Completed__c</fullName>
+        <description>Date EPC/ORT was marked as complete</description>
+        <externalId>false</externalId>
+        <label>Date EPC Completed</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Date_Legal_Terms_First_Viewed__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Legal Terms First Viewed</label>
+        <summarizedField>EPC_Activity__c.Date_of_Activity__c</summarizedField>
+        <summaryFilterItems>
+            <field>EPC_Activity__c.EPC_Section__c</field>
+            <operation>equals</operation>
+            <value>Legal Terms</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>EPC_Activity__c.Action__c</field>
+            <operation>equals</operation>
+            <value>Viewed</value>
+        </summaryFilterItems>
+        <summaryForeignKey>EPC_Activity__c.GSO_Contract__c</summaryForeignKey>
+        <summaryOperation>min</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Date_Payment_Information_First_Viewed__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Payment Information First Viewed</label>
+        <summarizedField>EPC_Activity__c.Date_of_Activity__c</summarizedField>
+        <summaryFilterItems>
+            <field>EPC_Activity__c.EPC_Section__c</field>
+            <operation>equals</operation>
+            <value>Form of Payment</value>
+        </summaryFilterItems>
+        <summaryForeignKey>EPC_Activity__c.GSO_Contract__c</summaryForeignKey>
+        <summaryOperation>min</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Date_Sent_to_EPC__c</fullName>
+        <description>Date the contract was submitted to ORT/EPC</description>
+        <externalId>false</externalId>
+        <label>Date Sent to EPC</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Debtor_Name__c</fullName>
+        <description>Debtor Name</description>
+        <externalId>false</externalId>
+        <label>Debtor Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Direct_Debit_City__c</fullName>
+        <description>Direct Debit New Address City</description>
+        <externalId>false</externalId>
+        <label>Direct Debit City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Direct_Debit_Country__c</fullName>
+        <description>Direct Debit New Address Country</description>
+        <externalId>false</externalId>
+        <label>Direct Debit Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Direct_Debit_Postal_Code_Zip__c</fullName>
+        <description>Direct Debit New Address Postal Code/Zip</description>
+        <externalId>false</externalId>
+        <label>Direct Debit Postal Code/Zip</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Direct_Debit_Region_State__c</fullName>
+        <description>Direct Debit New Address Region/State</description>
+        <externalId>false</externalId>
+        <label>Direct Debit Region/State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Direct_Debit_Street_Address__c</fullName>
+        <description>Direct Debit New Street Address</description>
+        <externalId>false</externalId>
+        <label>Direct Debit Street Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expedia_Hotel_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.Expedia_Hotel_Id__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Expedia Hotel Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Federal_Tax_ID_EIN__c</fullName>
+        <description>Federal Tax ID/EIN</description>
+        <externalId>false</externalId>
+        <label>Federal Tax ID/EIN</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Furthest_EPC_Page_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Furthest EPC Page Number</label>
+        <summarizedField>EPC_Activity__c.EPC_Page_Number__c</summarizedField>
+        <summaryForeignKey>EPC_Activity__c.GSO_Contract__c</summaryForeignKey>
+        <summaryOperation>max</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Furthest_EPC_Page__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( 
+Furthest_EPC_Page_Number__c , 
+1, &quot;Commercial Terms&quot;, 
+2, &quot;Payment Information&quot;, 
+3, &quot;Legal Terms&quot;, 
+&quot;Not Accessed&quot;)</formula>
+        <label>Furthest EPC Page</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GSO_Contract_Submission__c</fullName>
+        <description>GSO Contract Submission</description>
+        <externalId>false</externalId>
+        <label>GSO Contract Submission</label>
+        <referenceTo>GSO_Contract_Submission__c</referenceTo>
+        <relationshipLabel>GSO Contracts</relationshipLabel>
+        <relationshipName>GSOContracts</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>IBAN__c</fullName>
+        <description>IBAN</description>
+        <externalId>false</externalId>
+        <label>IBAN</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Currency__c</fullName>
+        <description>Stores the payment currency the customer wants to get paid in.  Set in ORT.</description>
+        <externalId>false</externalId>
+        <label>Payment Currency</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Type__c</fullName>
+        <description>Payment Type</description>
+        <externalId>false</externalId>
+        <label>Payment Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Bank Transfer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Check</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Credit Cart</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Direct Debit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EVC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Phase__c</fullName>
+        <externalId>false</externalId>
+        <label>Phase</label>
+        <picklist>
+            <controllingField>Status__c</controllingField>
+            <picklistValues>
+                <fullName>Outreach</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contracting</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conversion</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Preferred_Language__c</fullName>
+        <description>Preferred Language</description>
+        <externalId>false</externalId>
+        <label>Preferred Language</label>
+        <referenceTo>Language__c</referenceTo>
+        <relationshipLabel>GSO Contracts</relationshipLabel>
+        <relationshipName>GSO_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Property_City__c</fullName>
+        <description>Property City</description>
+        <externalId>false</externalId>
+        <label>Property City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Country__c</fullName>
+        <description>Property Country</description>
+        <externalId>false</externalId>
+        <label>Property Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Owner_City__c</fullName>
+        <description>Property Owner City</description>
+        <externalId>false</externalId>
+        <label>Property Owner City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Owner_Country__c</fullName>
+        <description>Property Owner Country</description>
+        <externalId>false</externalId>
+        <label>Property Owner Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Owner_Name__c</fullName>
+        <description>Property Owner Name</description>
+        <externalId>false</externalId>
+        <label>Property Owner Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Owner_Postal_Code_Zip__c</fullName>
+        <description>Property Owner Postal Code/Zip</description>
+        <externalId>false</externalId>
+        <label>Property Owner Postal Code/Zip</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Owner_Region_State__c</fullName>
+        <description>Property Owner Region/State</description>
+        <externalId>false</externalId>
+        <label>Property Owner Region/State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Owner_Street_Address__c</fullName>
+        <description>Property Owner Street Address</description>
+        <externalId>false</externalId>
+        <label>Property Owner Street Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Postal_Code_Zip__c</fullName>
+        <description>Property Postal Code/Zip</description>
+        <externalId>false</externalId>
+        <label>Property Postal Code/Zip</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Region_State__c</fullName>
+        <description>Property Region/State</description>
+        <externalId>false</externalId>
+        <label>Property Region/State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Street__c</fullName>
+        <description>Property Street</description>
+        <externalId>false</externalId>
+        <label>Property Street</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWIFT_Code__c</fullName>
+        <description>SWIFT Code</description>
+        <externalId>false</externalId>
+        <label>SWIFT Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Setup_on_EVC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates customer wants to be setup on EVC</description>
+        <externalId>false</externalId>
+        <label>Setup on EVC</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sub_phase__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-phase</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Commercial Terms</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Supplier_Training_by_Market_Manager__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Supplier Training by Market Manager</description>
+        <externalId>false</externalId>
+        <label>Supplier Training by Market Manager</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <label>GSO Contract</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Status__c</columns>
+        <columns>Phase__c</columns>
+        <columns>Sub_phase__c</columns>
+        <columns>Approval_Required__c</columns>
+        <columns>Approval_Status__c</columns>
+        <columns>Batch_Size__c</columns>
+        <columns>Date_Sent_to_EPC__c</columns>
+        <columns>Date_EPC_Completed__c</columns>
+        <columns>Date_Abandoned__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>GC-{000000}</displayFormat>
+        <label>GSO Contract Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>GSO Contracts</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Date_Contract_Started__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Contract_Term_months__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Require_Approval_Comment</fullName>
+        <active>true</active>
+        <description>Require Approval Comment</description>
+        <errorConditionFormula>AND( 
+ISPICKVAL( Approval_Status__c , &apos;Rejected&apos;) 
+, ISBLANK(Approval_Comment__c) 
+)</errorConditionFormula>
+        <errorDisplayField>Approval_Comment__c</errorDisplayField>
+        <errorMessage>You must enter a value</errorMessage>
+    </validationRules>
+</CustomObject>

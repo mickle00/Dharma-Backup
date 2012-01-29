@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Copy of Docusign__Docusign_Status__c object from PSG Salesforce Org</description>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Case__c</fullName>
+        <description>Lookup to Case Object</description>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Docusign Status</relationshipLabel>
+        <relationshipName>Docusign_Status</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Company__c</fullName>
+        <description>Lookup to Account.  Named company to match schema in PSG.</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Docusign Status</relationshipLabel>
+        <relationshipName>Docusign_Status</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Completed_Age__c</fullName>
+        <description>From PSG Org</description>
+        <externalId>false</externalId>
+        <label>Completed Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Completed_Date_Time__c</fullName>
+        <description>Date/TIme from PSG Org</description>
+        <externalId>false</externalId>
+        <label>Completed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Checklist__c</fullName>
+        <description>Lookup to Contract Checklist in GSO.  Comes from PSG Org</description>
+        <externalId>false</externalId>
+        <label>Contract</label>
+        <referenceTo>Contract_Checklist__c</referenceTo>
+        <relationshipLabel>Docusign Status</relationshipLabel>
+        <relationshipName>Docusign_Status</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Days_To_Complete__c</fullName>
+        <description>From PSG Org</description>
+        <externalId>false</externalId>
+        <label>Days To Complete</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Declined_Date_Time__c</fullName>
+        <description>From PSG Org</description>
+        <externalId>false</externalId>
+        <label>Declined</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Declined_Reason__c</fullName>
+        <description>From PSG Org</description>
+        <externalId>false</externalId>
+        <label>Declined Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Docusign_Envelope_ID__c</fullName>
+        <description>From PSG Org</description>
+        <externalId>false</externalId>
+        <label>Docusign Envelope ID</label>
+        <length>56</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Envelope_Link__c</fullName>
+        <description>From PSG Org</description>
+        <externalId>false</externalId>
+        <label>Envelope Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Envelope_Status__c</fullName>
+        <description>From PSG Org</description>
+        <externalId>false</externalId>
+        <label>Envelope Status</label>
+        <length>56</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Id of record from PSG Org</description>
+        <externalId>true</externalId>
+        <label>External_Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Hours_Sent_to_Sign__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Hours Sent to Sign</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hours_to_Complete__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Hours to Complete</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minutes_to_Complete__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Minutes to Complete</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_Completed__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Number Completed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Envelope_Number__c</fullName>
+        <description>Envelope number from Docusign__Docusign_Status__c object</description>
+        <externalId>false</externalId>
+        <label>PSG Envelope Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sender_Email__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Sender Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sender__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Sender</label>
+        <length>56</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sent_Age__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Sent Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sent_Date_Time__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Sent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Subject__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Subject</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_to_Complete__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Time to Complete</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Viewed_Date_Time__c</fullName>
+        <description>From PSG</description>
+        <externalId>false</externalId>
+        <label>Last Viewed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <label>Docusign Status</label>
+    <nameField>
+        <displayFormat>DOC-{0000000}</displayFormat>
+        <label>Docusign Status Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Docusign Status</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

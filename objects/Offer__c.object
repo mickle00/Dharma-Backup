@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object to house OFID data.  This object is for loading and maintaining offers.</description>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Account__c</fullName>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Offers</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Active_Offer__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>This field defaults as &quot;Active&quot;.  If an offer is ever retired, the box may be unchecked for tracking purposes.</inlineHelpText>
+        <label>Active Offer</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Images__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Images</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Offering_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Offering Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1 - Ground Transportation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 - Attractions</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 - Tours and Sightseeing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4 - Travel Accessories</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5 - Coupons</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7 - Walt Disney World® Resort Offerings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8 - Events and Shows</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9 - Golf Offerings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10 - Weddings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11 - Theme Parks</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12 - Restaurants and Nightlife</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>13 - Ski Offerings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>16 - Airport Parking</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>17 - Special Deals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20 - Air and Land Adventures</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>21 - Water Activities and Cruises</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>22 - Culinary Experiences</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>23 - Spa and Beauty</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>24 - Shopping</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>28 - Arts and Culture</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>29 - Guide Books</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>30 - Trip Protection Options</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>31 - Vacation Waiver</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>32 - Overnight Excursions</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>33 - Car Rental Insurance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>34 - Recommended</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Offering_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Offering ID</label>
+        <length>6</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Redemption_Address_Info__c</fullName>
+        <externalId>false</externalId>
+        <label>Redemption Address Info</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Vendor_Branch_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Vendor Branch ID</label>
+        <precision>4</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Vendor_Branch_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Vendor Branch Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Offer</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Offers</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Vendor_Branch_Name__c</columns>
+        <columns>Offering_Category__c</columns>
+        <columns>Number_of_Images__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Offers</label>
+        <sharedTo>
+            <groups>Media All</groups>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <label>Offer Description</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <namedFilters>
+        <fullName>Case_00NM0000000HiYLMA0</fullName>
+        <active>true</active>
+        <field>Case.Offer__c</field>
+        <filterItems>
+            <field>Offer__c.Account__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.AccountId</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+        <name>Case_Account Offer</name>
+        <sourceObject>Case</sourceObject>
+    </namedFilters>
+    <pluralLabel>Offers</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Offering_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Active_Offer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Vendor_Branch_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Offering_Category__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Number_of_Images__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Offering_ID__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Offering_Category__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Number_of_Images__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Account__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Offering_Category__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Number_of_Images__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Account__c</searchFilterFields>
+        <searchFilterFields>Offering_ID__c</searchFilterFields>
+        <searchFilterFields>Number_of_Images__c</searchFilterFields>
+        <searchResultsAdditionalFields>Offering_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Active_Offer__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Vendor_Branch_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Offering_Category__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Number_of_Images__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

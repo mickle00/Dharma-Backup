@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Junction object linking a Contact record to an Account record.  Used so a contact can have many accounts without duplicating the contact information</description>
+    <enableActivities>true</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Account__c</fullName>
+        <description>Lookup to Account object Contact is linked to.</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Contacts</relationshipLabel>
+        <relationshipName>Account_Contacts</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Whether or not the contact is active for this particular account. Contacts can be made inactive on a hotel by hotel basis. A workflow rule date stamps the day the particular accountcontact was made inactive.</description>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <description>Lookup to Contact linking it to an Account</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Account Contacts</relationshipLabel>
+        <relationshipName>Account_Contacts</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Full_Name__c</fullName>
+        <description>Full name of contact</description>
+        <externalId>false</externalId>
+        <formula>Contact__r.FirstName + &apos; &apos; +  Contact__r.LastName</formula>
+        <label>Full Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inactive_Date__c</fullName>
+        <description>The date an AccountContact is marked as inactive. Set automatically via a workflow rule.</description>
+        <externalId>false</externalId>
+        <label>Inactive Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Integration_Status__c</fullName>
+        <description>Formula field to give quick and easy insight to if the AccountContact is currently synced (thus uneditable) with PSG Salesforce. Can&apos;t make a formula field a checkbox</description>
+        <externalId>false</externalId>
+        <formula>IF(PSG_Contact_Id__c != null, &quot;Synced with PSG&quot;, &quot;Not Synced with PSG&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Integration Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number__c</fullName>
+        <description>Hacky solution to make related list hyperlink column smaller, rather than &quot; the very wide, Account Contact: Account Contact Number&quot;</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot;&amp;Id , Name, &quot;_top&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Account_Id__c</fullName>
+        <description>Account Id from the PSG Org</description>
+        <externalId>true</externalId>
+        <label>PSG Account Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Contact_Id__c</fullName>
+        <description>The Salesforce Contact Id from the PSG Salesforce Org.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>This is the Salesforce Contact.Id field field from the PSG Salesforce Org</inlineHelpText>
+        <label>PSG Contact Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Content_Contact__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if contact is primary content contact for hotel</description>
+        <externalId>false</externalId>
+        <label>Primary Content Contact</label>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Unique_Key__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>GSOAccountID:GSOContactID
+
+Used to enforce uniqueness. Cannot have the same contact associated with the same account.</description>
+        <externalId>true</externalId>
+        <label>Unique Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Account Contact</label>
+    <nameField>
+        <displayFormat>AC-{000000}</displayFormat>
+        <label>Account Contact Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Contacts</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Cant_Edit_Integrated_Contacts</fullName>
+        <active>true</active>
+        <description>Only SysAdmin &amp; API can modify an AccountContact that is in sync with PSG.</description>
+        <errorConditionFormula>AND( PSG_Contact_Id__c != NULL, $Profile.Name != &quot;System Administrator&quot;, $Profile.Name != &quot;API Only&quot;)</errorConditionFormula>
+        <errorMessage>You can&apos;t modify an AccountContact that is currently integrated with PSG.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Create_Case</fullName>
+        <availability>online</availability>
+        <description>Create Case from Account Contact</description>
+        <displayType>button</displayType>
+        <linkType>url</linkType>
+        <masterLabel>Create Case</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/setup/ui/recordtypeselect.jsp?ent=Case&amp;retURL=%2F{!Account_Contact__c.ContactId__c}&amp;save_new_url=%2F500%2Fe%3FretURL%3D%252F{!Account_Contact__c.ContactId__c}%26def_contact_id%3D{!Account_Contact__c.ContactId__c}%26def_account_id%3D{!Account_Contact__c.AccountId__c}</url>
+    </webLinks>
+</CustomObject>
