@@ -19,6 +19,8 @@
  *
  * See the Apex Language Reference for more information about Testing and Code Coverage.
  */
+
+//mps add
 @isTest
 private class AccountClass_Test {
 	
